@@ -12,5 +12,5 @@ I – Interface segregation principle
 
 D – Dependency Inversion Principle
 
-Console application to try to implement best practives, with some unit tests.
+Console application to try to implement best practices, with some unit tests.
 Not complete yet, still some refactor and cleaning of code
