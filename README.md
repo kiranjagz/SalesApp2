@@ -1,5 +1,7 @@
 # SalesApp2
 Sales basket application using Solid concepts:
+
+
 S – Single-responsiblity principle
 O – Open-closed principle
 L – Liskov substitution principle
