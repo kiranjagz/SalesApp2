@@ -43,13 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ReceiptItem.cs" />
     <Compile Include="Products\Book.cs" />
     <Compile Include="Products\Food.cs" />
     <Compile Include="Receipt\IReceipt.cs" />
     <Compile Include="Receipt\ReceiptBuilder.cs" />
     <Compile Include="Rounding\IRounding.cs" />
     <Compile Include="Rounding\RoundingUp.cs" />
-    <Compile Include="ShoppingCart.cs" />
+    <Compile Include="Cart\ShoppingCart.cs" />
     <Compile Include="TaxCalculators\AggregatedTaxCalculator.cs" />
     <Compile Include="TaxCalculators\BasicTaxCalculator.cs" />
     <Compile Include="TaxCalculators\ITaxCalculator.cs" />

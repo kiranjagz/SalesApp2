@@ -1,5 +1,8 @@
 ﻿
+using SalesApp.Cart;
 using SalesApp.Products;
+using SalesApp.Receipt;
+using SalesApp.Rounding;
 using SalesApp.TaxCalculators;
 using System;
 using System.Collections.Generic;
@@ -13,19 +16,20 @@ namespace SalesApp
     {
         static void Main(string[] args)
         {
-            List<ITaxCalculator> listTaxCalculator = new List<ITaxCalculator>();
-            ITaxCalculator importTaxCalculator = new ImportTaxCalculator(new Rounding.RoundingUp());
-            ITaxCalculator basicTaxCalculator = new BasicTaxCalculator(new Rounding.RoundingUp());
-            listTaxCalculator.Add(importTaxCalculator);
-            listTaxCalculator.Add(basicTaxCalculator);
-
             #region input1
             List<IProduct> productsInput1 = new List<IProduct>();
             productsInput1.Add(new Book("book", 12.49m, false));
             productsInput1.Add(new Other("music CD", 14.99m, false));
             productsInput1.Add(new Food("chocolate bar", 0.85m, false));
 
-            ShoppingCart shoppingCart = new ShoppingCart(productsInput1, listTaxCalculator);
+            ShoppingCart shoppingCart =
+                new ShoppingCart(
+                    productsInput1,
+                    new List<ITaxCalculator>(){
+                        new ImportTaxCalculator(new RoundingUp()),
+                        new BasicTaxCalculator(new RoundingUp())},
+                            new ReceiptBuilder());
+
             var output = shoppingCart.Display();
 
             Console.Write(output);
@@ -36,7 +40,13 @@ namespace SalesApp
             productsInput2.Add(new Food("imported box of chocolates", 10.00m, true));
             productsInput2.Add(new Other("bottle of perfume", 47.50m, true));
 
-            ShoppingCart shoppingCart2 = new ShoppingCart(productsInput2, listTaxCalculator);
+            ShoppingCart shoppingCart2 =
+              new ShoppingCart(
+                  productsInput2,
+                  new List<ITaxCalculator>(){
+                        new ImportTaxCalculator(new RoundingUp()),
+                        new BasicTaxCalculator(new RoundingUp())},
+                          new ReceiptBuilder());
             var output2 = shoppingCart2.Display();
 
             Console.Write(output2);
@@ -49,7 +59,13 @@ namespace SalesApp
             productsInput3.Add(new Medical("packet of headache pills", 9.75m, false));
             productsInput3.Add(new Food("imported box of chocolates", 11.25m, true));
 
-            ShoppingCart shoppingCart3 = new ShoppingCart(productsInput3, listTaxCalculator);
+            ShoppingCart shoppingCart3 =
+             new ShoppingCart(
+                 productsInput3,
+                 new List<ITaxCalculator>(){
+                        new ImportTaxCalculator(new RoundingUp()),
+                        new BasicTaxCalculator(new RoundingUp())},
+                         new ReceiptBuilder());
             var output3 = shoppingCart3.Display();
 
             Console.Write(output3);

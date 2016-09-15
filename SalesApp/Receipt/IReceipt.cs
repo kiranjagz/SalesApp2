@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace SalesApp.Receipt
 {
     public interface IReceipt
     {
+        void AddtoReceipt(List<ReceiptItem> receiptItem);
         string GenerateReceipt();
     }
 }

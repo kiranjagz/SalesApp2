@@ -12,7 +12,5 @@ namespace SalesApp.Products
         decimal Price { get; }
         bool HasaBasicTax { get; }
         bool HasaImportTax { get; }
-
-        //public abstract decimal CalculateTax();   
     }
 }
